@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Forgotten Maze</title>
     <style>
-        input{color:red;}h5{color:white;}body{background-color:black;}button{background-color:black;color:white;border:2px solid gray;font-family:Fantasy;box-shadow:0 0 10px pink;}.image{width:80%;margin-bottom:20px;}.hidden{display:none;}#startButton{font-size:20px;padding:10px 20px;cursor:pointer;}
+        input{color:red; box-shadow: 0 0 5px red;}h5{color:white;}body{background-color:black;}button{background-color:black;color:white;border:2px solid gray;font-family:Fantasy;box-shadow:0 0 10px pink;}.image{width:80%;margin-bottom:20px;}.hidden{display:none;}#startButton{font-size:20px;padding:10px 20px;cursor:pointer;}
     </style>
 </head>
 <body>
 
-<h5>Instruções: As respostas são todas em letras minusculas e sem acentos. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+<h5>Instruções: As respostas são todas em letras minúsculas e SEM acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
 <button id="startButton" onclick="a()">Iniciar Jogo</button>
 
 <div id="fase1" class="hidden">
@@ -67,7 +67,7 @@
         if (u === r[f]) {
             document.getElementById(`fase${f}`).style.display = 'none';
             const n = document.getElementById(`fase${f + 1}`);
-            if (n) {n.style.display = 'block';} else {alert("Parabéns! Você completou o Enigma.");}
+            if (n) {n.style.display = 'block';} else {alert("Parabéns! Você completou os Enigmas. Em breve haverá mais, fique atento!");}
         } else {
             alert("Resposta incorreta.");
         }
