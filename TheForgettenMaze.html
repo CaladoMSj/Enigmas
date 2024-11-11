@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forgotten Maze</title>
+    <style>
+        input{
+          color: white;
+        }
+    
+      h5{
+        color: white;
+      }
+    
+          body{
+            background-color:black;
+          }
+    
+        button{
+          background-color: black;
+          color: white;
+          border: 2px solid gray;
+          font-family: Fantasy;
+          box-shadow: 0 0 10px pink;
+        }
+    
+        .image {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        /* Inicialmente, todas as fases estarão ocultas */
+        .hidden {
+            display: none;
+        }
+        /* Botão de Start */
+        #startButton {
+            font-size: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão de Start -->
+    <h5>Instruções: As respostas são todas em letras minusculas e sem acentos. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas. </h5>
+    <button id="startButton" onclick="startGame()">Iniciar Jogo</button>
+
+    <!-- Fase 1, inicialmente visível após o start -->
+    <div id="fase1" class="hidden">
+        <img src="09112024.png" alt="" class="image">
+        <div class="input-container">
+            <input type="text" id="answer1" placeholder="Digite sua resposta" />
+            <button onclick="checkAnswer(1)">Enviar Resposta</button>
+        </div>
+    </div>
+
+    <!-- Fase 2, inicialmente oculta -->
+    <div id="fase2" class="hidden">
+        <img src="10112024.png" alt="" class="image">
+        <input type="text" id="answer2" placeholder="Digite sua resposta" />
+        <button onclick="checkAnswer(2)">Enviar Resposta</button>
+    </div>
+
+    <!-- Fase 3, inicialmente oculta -->
+    <div id="fase3" class="hidden">
+        <img src="10112025.png" alt="" class="image">
+        <input type="text" id="answer3" placeholder="Digite sua resposta" />
+        <button onclick="checkAnswer(3)">Enviar Resposta</button>
+    </div>
+
+    <!-- Fase 4, inicialmente oculta -->
+    <div id="fase4" class="hidden">
+        <img src="13112024.png" alt="" class="image">
+        <input type="text" id="answer4" placeholder="Digite sua resposta" />
+        <button onclick="checkAnswer(4)">Enviar Resposta</button>
+        </div>
+        
+            <!-- Fase 5, inicialmente oculta -->
+    <div id="fase5" class="hidden">
+        <img src="14112024.png" alt="" class="image"> <br> <br> <br> <br>
+        <audio src="14112024.m4a" controls autoplay></audio> <br> <br> <br> <br>
+        <input type="text" id="answer5" placeholder="Digite sua resposta" />
+        <button onclick="checkAnswer(5)">Enviar Resposta</button>
+        </div>
+        
+            <!-- Fase 6, inicialmente oculta -->
+    <div id="fase6" class="hidden">
+        <img src="12112024.png" alt="" class="image">
+        <input type="text" id="answer6" placeholder="Digite sua resposta" />
+        <button onclick="checkAnswer(6)">Enviar Resposta</button>
+        </div>
+        
+          <!-- Fase 7, inicialmemte oculta -->
+        <div id="fase7" class="hidden">
+        <img src="15112024.png" alt="" class="image">
+        <input type="text" id="answer7" placeholder="Digite sua resposta" />
+        <button onclick="checkAnswer(7)">Enviar Resposta</button>
+        </div>
+        
+
+    <script>
+        // Função que inicia o jogo e exibe a primeira fase
+        function startGame() {
+            document.getElementById("startButton").style.display = 'none'; // Esconde o botão "Start"
+            document.getElementById("fase1").style.display = 'block'; // Exibe a fase 1
+        }
+
+        // Função para checar as respostas e avançar de fase
+        function checkAnswer(fase) {
+            const respostasCorretas = {
+                1: "eles",
+                2: "estao me",
+                3: "observando",
+                4: "todos",
+                5: "eles",
+                6: "me ajude",
+                7: "chegou ao fim"
+            };
+            const respostaUsuario = document.getElementById(`answer${fase}`).value.trim();
+
+            if (respostaUsuario === respostasCorretas[fase]) {
+                // Esconde a fase atual
+                document.getElementById(`fase${fase}`).style.display = 'none';
+
+                // Exibe a próxima fase
+                const proximaFase = document.getElementById(`fase${fase + 1}`);
+                if (proximaFase) {
+                    proximaFase.style.display = 'block';
+                } else {
+                    alert("Parabéns! Você completou o Enigma.");
+                }
+            } else {
+                alert("Resposta incorreta.");
+            }
+        }
+    </script>
+
+</body>
+</html>
