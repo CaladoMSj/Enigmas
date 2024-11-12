@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Forgotten Maze</title>
+    <style>
+        input{color:red;} h5{color:white;} body{background-color:black;} button{background-color:black;color:white;border:2px solid gray;font-family:Fantasy;box-shadow:0 0 10px white;}.image{width:80%;margin-bottom:20px;} .hidden{display:none;} #startButton{font-size:25px;padding:15px 30px;cursor:pointer;transition: all 0.3s ease;}.image{width:80%;margin-bottom:20px;} #startButton:hover{background-color:red;color:white;box-shadow:0 0 20px red;}.intro-title{color:white; font-size:40px; text-align:center; margin-top:20%; text-shadow: 0 0 10px darkred;} #intro { color: white; font-size: 24px; text-align: center; margin-top: 20%; display: none; opacity: 0; transition: opacity 2.5s ease-in-out; font-family: 'Arial', sans-serif;} #intro h1 { text-shadow: 0 0 10px rgba(255,0,0,0.7); } /* Brilho vermelho escuro no título do jogo */ #startButtonIntro { font-size: 20px; padding: 10px 20px; cursor: pointer; font-family: 'Arial', sans-serif; }
+        #dev {
+          font-size: 12px;
+          color:darkred;
+        }
+            /* Estilos para o botão de dica */
+.hintButton {
+    background-color: transparent;
+    color: purple;
+    text-shadow: darkblue;
+    border: none;
+    font-family: Fantasy;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.hintButton:hover {
+    color: pink; /* Cor vermelha para destaque */
+    text-shadow: 0 0 10px darkblue; /* Efeito de brilho sutil */
+}
+.hintButton:focus {
+    outline: none; /* Remove o contorno */
+}
+
+  /* Estilo de feedback visual para respostas */
+        .correct {
+    background-color: darkgreen;
+    color: white;
+    box-shadow: 0 0 10px darkgreen;
+    animation: smoothShake 0.5s ease-in-out; /* Animação suave */
+}
+        .incorrect {
+    background-color: red;
+    color: white;
+    box-shadow: 0 0 15px red;
+    animation: harshShake 0.5s ease-in-out; /* Animação bruta */
+}
+/* Animação suave */
+        @keyframes smoothShake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(0px); }
+    50% { transform: translateX(0px); }
+    75% { transform: translateX(0px); }
+    100% { transform: translateX(0); }
+}
+/* Animação bruta */
+        @keyframes harshShake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    70% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Tela de introdução -->
+    <div id="intro">
+        <h1 class="intro-title">Bem-vindo ao... <br> "The Forgotten Maze"</h1>
+        
+        <h6 id="dev">Developer: TheCruxis</h6> <br> <br>
+        <button id="startButtonIntro" onclick="startGame()">Iniciar Jogo</button>
+        <br> <br> <br> 
+        
+    </div>
+
+    <!-- Instruções antes do jogo começar -->
+
+    
+    <!-- Telas do jogo (fase1, fase2, etc.) -->
+    <div id="fase1" class="hidden">
+      <button onclick="giveHint(1)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="09112024.png" alt="" class="image">
+        <div class="input-container">
+            <input type="text" id="answer1" placeholder="Digite sua resposta" />
+            <button onclick="b(1)">Enviar Resposta</button>
+        </div>
+    </div>
+
+    <div id="fase2" class="hidden">
+      <button onclick="giveHint(2)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="10112024.png" alt="" class="image">
+        <input type="text" id="answer2" placeholder="Digite sua resposta" />
+        <button onclick="b(2)">Enviar Resposta</button>
+    </div>
+
+    <div id="fase3" class="hidden">
+      <button onclick="giveHint(3)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="10112025.png" alt="" class="image">
+        <input type="text" id="answer3" placeholder="Digite sua resposta" />
+        <button onclick="b(3)">Enviar Resposta</button>
+    </div>
+
+    <div id="fase4" class="hidden">
+      <button onclick="giveHint(4)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="13112024.png" alt="" class="image">
+        <input type="text" id="answer4" placeholder="Digite sua resposta" />
+        <button onclick="b(4)">Enviar Resposta</button>
+    </div>
+            
+    <div id="fase5" class="hidden">
+      <button onclick="giveHint(5)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="14112024.png" alt="" class="image"> <br> <br> <br> <br>
+        <audio src="14112024.m4a" controls autoplay></audio> <br> <br> <br> <br>
+        <input type="text" id="answer5" placeholder="Digite sua resposta" />
+        <button onclick="b(5)">Enviar Resposta</button>
+    </div>
+            
+    <div id="fase6" class="hidden">
+      <button onclick="giveHint(6)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="12112024.png" alt="" class="image">
+        <input type="text" id="answer6" placeholder="Digite sua resposta" />
+        <button onclick="b(6)">Enviar Resposta</button>
+    </div>
+            
+    <div id="fase7" class="hidden">
+      <button onclick="giveHint(7)" class="hintButton">Dica</button>
+          <h5>Instruções: As respostas são todas em letras minúsculas e sem acentuação. Algumas contêm espaço entre palavras. Aplicativos ou sites podem ser usados para encontrar suas respostas.</h5>
+        <img src="15112024.png" alt="" class="image">
+        <input type="text" id="answer7" placeholder="Digite sua resposta" />
+        <button onclick="b(7)">Enviar Resposta</button>
+    </div>
+
+<script>
+    // Função para exibir a introdução e depois começar o jogo
+    function startGame() {
+        // Esconde a introdução
+        document.getElementById("intro").style.opacity = 0;
+        setTimeout(function() {
+            document.getElementById("intro").style.display = 'none';
+            document.getElementById("fase1").style.display = 'block'; // Mostra a primeira fase após 2s
+        }, 2000);
+    }
+
+  function giveHint(fase) {
+    const dicas = {
+        1: "Talvez tenha algo a mais na imagem.",
+        2: "Não é a mesma coisa.",
+        3: "Saber contar... é mais do que simples.",
+        4: "Traduzir não faz mal.",
+        5: "Além de escutar, preciso enxergar.",
+        6: "Talvez eu precise de uma lanterna?",
+        7: "O nome é a chave para a resposta."
+    };
+
+    alert(dicas[fase]); // Exibe a dica com base na fase
+}
+
+function b(f) {
+    const r = {3: "observando", 1: "eles", 6: "me ajude", 2: "estao me", 7: "chegou ao fim", 4: "todos", 5: "eles"};
+    const u = document.getElementById(`answer${f}`).value.trim();
+    const inputField = document.getElementById(`answer${f}`);
+
+    // Verifica se a resposta está correta
+    if (u === r[f]) {
+        inputField.classList.add("correct"); // Aplica o estilo de resposta correta
+
+        // Deixa a animação de resposta correta ser visível por 1 segundo
+        setTimeout(function() {
+            document.getElementById(`fase${f}`).style.display = 'none';
+            const n = document.getElementById(`fase${f + 1}`);
+            if (n) {
+                n.style.display = 'block'; // Mostra a próxima fase
+            } else {
+                alert("Parabéns! Você completou todos os enigmas... ou talvez não. Em breve haverá mais, fique atento!");
+            }
+            inputField.classList.remove("correct"); // Remove o feedback de "correto"
+        }, 1000); // Delay de 1 segundo para mostrar o feedback visual
+    } else {
+        inputField.classList.add("incorrect"); // Aplica o estilo de resposta incorreta
+
+        // Remove o feedback de "incorreto" após 1 segundo
+        setTimeout(function() {
+            inputField.classList.remove("incorrect"); 
+        }, 1000);
+
+    }
+}
+
+
+
+    // Exibir a introdução com animação
+    window.onload = function() {
+        document.getElementById("intro").style.display = 'block';
+        setTimeout(function() {
+            document.getElementById("intro").style.opacity = 1;
+        }, 100);
+    }
+</script>
+
+</body>
+</html>
