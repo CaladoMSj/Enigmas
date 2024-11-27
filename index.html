@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Forgotten Maze</title>
+
     <style>
         input{color:red;} h5{color:white;} 
+        
         img{
             width: 100%;
             height: auto;
@@ -70,7 +72,11 @@
     100% { transform: translateX(0); }
 }
 
-
+        @media (min-width: 768px) {
+    .menu-button {
+        width: auto;
+    }
+        }
 /* Estilos do menu */
   #menu {
     opacity: 1;
@@ -102,7 +108,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%; /* Ajusta o tamanho dos botões */
-    max-width: 300px; /* Limita o tamanho máximo dos botões */
+    max-width: 200px; /* Limita o tamanho máximo dos botões */
 }
         .menu-button:hover {
             background-color: darkred;
